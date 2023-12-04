@@ -6,6 +6,7 @@ package prometheus
 import (
 	"github.com/grpc-ecosystem/go-grpc-middleware/v2/interceptors"
 	"github.com/prometheus/client_golang/prometheus"
+	grpc_signature "github.com/tulzke/grpc-signature"
 	"google.golang.org/grpc"
 )
 
@@ -31,22 +32,22 @@ func NewServerMetrics(opts ...ServerMetricsOption) *ServerMetrics {
 			config.counterOpts.apply(prometheus.CounterOpts{
 				Name: "grpc_server_started_total",
 				Help: "Total number of RPCs started on the server.",
-			}), []string{"grpc_type", "grpc_service", "grpc_method"}),
+			}), []string{"grpc_type", "grpc_service", "grpc_method", "grpc_client"}),
 		serverHandledCounter: prometheus.NewCounterVec(
 			config.counterOpts.apply(prometheus.CounterOpts{
 				Name: "grpc_server_handled_total",
 				Help: "Total number of RPCs completed on the server, regardless of success or failure.",
-			}), []string{"grpc_type", "grpc_service", "grpc_method", "grpc_code"}),
+			}), []string{"grpc_type", "grpc_service", "grpc_method", "grpc_code", "grpc_client"}),
 		serverStreamMsgReceived: prometheus.NewCounterVec(
 			config.counterOpts.apply(prometheus.CounterOpts{
 				Name: "grpc_server_msg_received_total",
 				Help: "Total number of RPC stream messages received on the server.",
-			}), []string{"grpc_type", "grpc_service", "grpc_method"}),
+			}), []string{"grpc_type", "grpc_service", "grpc_method", "grpc_client"}),
 		serverStreamMsgSent: prometheus.NewCounterVec(
 			config.counterOpts.apply(prometheus.CounterOpts{
 				Name: "grpc_server_msg_sent_total",
 				Help: "Total number of gRPC stream messages sent by the server.",
-			}), []string{"grpc_type", "grpc_service", "grpc_method"}),
+			}), []string{"grpc_type", "grpc_service", "grpc_method", "grpc_client"}),
 		serverHandledHistogram: config.serverHandledHistogram,
 	}
 }
@@ -95,14 +96,14 @@ func (m *ServerMetrics) preRegisterMethod(serviceName string, mInfo *grpc.Method
 	methodName := mInfo.Name
 	methodType := string(typeFromMethodInfo(mInfo))
 	// These are just references (no increments), as just referencing will create the labels but not set values.
-	_, _ = m.serverStartedCounter.GetMetricWithLabelValues(methodType, serviceName, methodName)
-	_, _ = m.serverStreamMsgReceived.GetMetricWithLabelValues(methodType, serviceName, methodName)
-	_, _ = m.serverStreamMsgSent.GetMetricWithLabelValues(methodType, serviceName, methodName)
+	_, _ = m.serverStartedCounter.GetMetricWithLabelValues(methodType, serviceName, methodName, grpc_signature.UnknownClient)
+	_, _ = m.serverStreamMsgReceived.GetMetricWithLabelValues(methodType, serviceName, methodName, grpc_signature.UnknownClient)
+	_, _ = m.serverStreamMsgSent.GetMetricWithLabelValues(methodType, serviceName, methodName, grpc_signature.UnknownClient)
 	if m.serverHandledHistogram != nil {
-		_, _ = m.serverHandledHistogram.GetMetricWithLabelValues(methodType, serviceName, methodName)
+		_, _ = m.serverHandledHistogram.GetMetricWithLabelValues(methodType, serviceName, methodName, grpc_signature.UnknownClient)
 	}
 	for _, code := range interceptors.AllCodes {
-		_, _ = m.serverHandledCounter.GetMetricWithLabelValues(methodType, serviceName, methodName, code.String())
+		_, _ = m.serverHandledCounter.GetMetricWithLabelValues(methodType, serviceName, methodName, code.String(), grpc_signature.UnknownClient)
 	}
 }
 
