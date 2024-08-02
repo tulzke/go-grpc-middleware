@@ -51,7 +51,7 @@ All paths should work with `go get <path>`.
 #### Observability
 
 * Metrics:
-  * [`github.com/grpc-ecosystem/go-grpc-middleware/providers/prometheus`⚡](providers/prometheus) - Prometheus client-side and server-side monitoring middleware. Supports exemplars. Moved from deprecated now [`go-grpc-prometheus`](https://github.com/grpc-ecosystem/go-grpc-prometheus).
+  * [`github.com/tulzke/go-grpc-middleware/providers/prometheus`⚡](providers/prometheus) - Prometheus client-side and server-side monitoring middleware. Supports exemplars. Moved from deprecated now [`go-grpc-prometheus`](https://github.com/grpc-ecosystem/go-grpc-prometheus).
   * (external) [`go.opentelemetry.io/contrib/instrumentation/google.golang.org/grpc/otelgrpc`](https://go.opentelemetry.io/contrib/instrumentation/google.golang.org/grpc/otelgrpc) - official OpenTelemetry interceptors (metric and tracing).
 * Logging with [`github.com/tulzke/go-grpc-middleware/v2/interceptors/logging`](interceptors/logging) - a customizable logging middleware offering extended per request logging. It requires logging adapter, see examples in [`interceptors/logging/examples`](interceptors/logging/examples) for `go-kit`, `log`, `logr`, `logrus`, `slog`, `zap` and `zerolog`.
   * NOTE: Interceptors with [context](https://pkg.go.dev/context) field injections need to be chained before the adapter function.
@@ -97,7 +97,7 @@ go get github.com/tulzke/go-grpc-middleware/v2/<package>
 For providers modules and packages, since they are v1, no version is added to the path e.g.
 
 ```
-go get github.com/grpc-ecosystem/go-grpc-middleware/providers/prometheus
+go get github.com/tulzke/go-grpc-middleware/providers/prometheus
 ```
 
 ## Changes compared to v1
@@ -112,7 +112,7 @@ go get github.com/grpc-ecosystem/go-grpc-middleware/providers/prometheus
 * Chain interceptors was removed, because `grpc` implemented one.
 * Moved to the new proto API (google.golang.org/protobuf).
 * All "deciders", so functions that decide what to do based on gRPC service name and method (aka "fullMethodName") are removed (!). Use [`github.com/tulzke/go-grpc-middleware/v2/interceptors/selector`](interceptors/selector) interceptor to select what method, type or service should use what interceptor.
-* No more snake case package names. We have now single word meaningful package names. If you have collision in package names we recommend adding grpc prefix e.g. `grpcprom "github.com/grpc-ecosystem/go-grpc-middleware/providers/prometheus"`.
+* No more snake case package names. We have now single word meaningful package names. If you have collision in package names we recommend adding grpc prefix e.g. `grpcprom "github.com/tulzke/go-grpc-middleware/providers/prometheus"`.
 * All the options (if any) are in the form of `<package_name>.With<Option Name>`, with extensibility to add more of them.
 * `v2` is the main (default) development branch.
 

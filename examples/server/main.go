@@ -14,11 +14,11 @@ import (
 
 	"github.com/go-kit/log"
 	"github.com/go-kit/log/level"
-	grpcprom "github.com/grpc-ecosystem/go-grpc-middleware/providers/prometheus"
 	"github.com/oklog/run"
 	"github.com/prometheus/client_golang/prometheus"
 	"github.com/prometheus/client_golang/prometheus/promauto"
 	"github.com/prometheus/client_golang/prometheus/promhttp"
+	grpcprom "github.com/tulzke/go-grpc-middleware/providers/prometheus"
 	"github.com/tulzke/go-grpc-middleware/v2/interceptors"
 	"github.com/tulzke/go-grpc-middleware/v2/interceptors/auth"
 	"github.com/tulzke/go-grpc-middleware/v2/interceptors/logging"

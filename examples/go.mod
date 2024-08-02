@@ -6,7 +6,7 @@ toolchain go1.21.0
 
 require (
 	github.com/go-kit/log v0.2.1
-	github.com/grpc-ecosystem/go-grpc-middleware/providers/prometheus v1.0.0
+	github.com/tulzke/go-grpc-middleware/providers/prometheus v1.0.0
 	github.com/tulzke/go-grpc-middleware/v2 v2.0.0
 	github.com/oklog/run v1.1.0
 	github.com/prometheus/client_golang v1.14.1-0.20230317203157-0f80f4931424
@@ -44,6 +44,6 @@ require (
 )
 
 replace (
-	github.com/grpc-ecosystem/go-grpc-middleware/providers/prometheus => ../providers/prometheus
+	github.com/tulzke/go-grpc-middleware/providers/prometheus => ../providers/prometheus
 	github.com/tulzke/go-grpc-middleware/v2 => ../
 )

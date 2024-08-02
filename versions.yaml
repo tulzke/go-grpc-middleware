@@ -9,4 +9,4 @@ module-sets:
   v1-providers:
     version: v1.0.0
     modules:
-      - github.com/grpc-ecosystem/go-grpc-middleware/providers/prometheus
+      - github.com/tulzke/go-grpc-middleware/providers/prometheus

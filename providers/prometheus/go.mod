@@ -1,4 +1,4 @@
-module github.com/grpc-ecosystem/go-grpc-middleware/providers/prometheus
+module github.com/tulzke/go-grpc-middleware/providers/prometheus
 
 go 1.21
 
