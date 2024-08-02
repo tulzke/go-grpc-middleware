@@ -10,10 +10,10 @@ import (
 	"testing"
 
 	"github.com/bufbuild/protovalidate-go"
-	protovalidate_middleware "github.com/grpc-ecosystem/go-grpc-middleware/v2/interceptors/protovalidate"
-	"github.com/grpc-ecosystem/go-grpc-middleware/v2/testing/testvalidate"
-	testvalidatev1 "github.com/grpc-ecosystem/go-grpc-middleware/v2/testing/testvalidate/v1"
 	"github.com/stretchr/testify/assert"
+	protovalidate_middleware "github.com/tulzke/go-grpc-middleware/v2/interceptors/protovalidate"
+	"github.com/tulzke/go-grpc-middleware/v2/testing/testvalidate"
+	testvalidatev1 "github.com/tulzke/go-grpc-middleware/v2/testing/testvalidate/v1"
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/credentials/insecure"

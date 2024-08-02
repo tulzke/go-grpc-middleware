@@ -6,7 +6,7 @@ package testvalidate
 import (
 	"context"
 
-	testvalidatev1 "github.com/grpc-ecosystem/go-grpc-middleware/v2/testing/testvalidate/v1"
+	testvalidatev1 "github.com/tulzke/go-grpc-middleware/v2/testing/testvalidate/v1"
 )
 
 type TestValidateService struct {

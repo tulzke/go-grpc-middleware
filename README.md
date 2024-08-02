@@ -1,6 +1,6 @@
 # Go gRPC Middleware
 
-[![go](https://github.com/grpc-ecosystem/go-grpc-middleware/workflows/go/badge.svg?branch=v2)](https://github.com/grpc-ecosystem/go-grpc-middleware/actions?query=branch%3Av2) [![Go Report Card](https://goreportcard.com/badge/github.com/grpc-ecosystem/go-grpc-middleware)](https://goreportcard.com/report/github.com/grpc-ecosystem/go-grpc-middleware) [![GoDoc](http://img.shields.io/badge/GoDoc-Reference-blue.svg)](https://godoc.org/github.com/grpc-ecosystem/go-grpc-middleware/v2) [![Apache 2.0 License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](LICENSE) [![Slack](https://img.shields.io/badge/slack-%23grpc--middleware-brightgreen)](https://gophers.slack.com/archives/CNJL30P4P)
+[![go](https://github.com/grpc-ecosystem/go-grpc-middleware/workflows/go/badge.svg?branch=v2)](https://github.com/grpc-ecosystem/go-grpc-middleware/actions?query=branch%3Av2) [![Go Report Card](https://goreportcard.com/badge/github.com/grpc-ecosystem/go-grpc-middleware)](https://goreportcard.com/report/github.com/grpc-ecosystem/go-grpc-middleware) [![GoDoc](http://img.shields.io/badge/GoDoc-Reference-blue.svg)](https://godoc.org/github.com/tulzke/go-grpc-middleware/v2) [![Apache 2.0 License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](LICENSE) [![Slack](https://img.shields.io/badge/slack-%23grpc--middleware-brightgreen)](https://gophers.slack.com/archives/CNJL30P4P)
 
 This repository holds [gRPC Go](https://github.com/grpc/grpc-go) Middlewares: interceptors, helpers and utilities.
 
@@ -39,13 +39,13 @@ This pattern offers clean and explicit shared functionality for all your gRPC me
 
 ## Interceptors
 
-This list covers known interceptors that users use for their Go microservices (both in this repo and external). Click on each to see extended examples in `examples_test.go` (also available in [pkg.go.dev](https://godoc.org/github.com/grpc-ecosystem/go-grpc-middleware/v2))
+This list covers known interceptors that users use for their Go microservices (both in this repo and external). Click on each to see extended examples in `examples_test.go` (also available in [pkg.go.dev](https://godoc.org/github.com/tulzke/go-grpc-middleware/v2))
 
 All paths should work with `go get <path>`.
 
 #### Auth
 
-* [`github.com/grpc-ecosystem/go-grpc-middleware/v2/interceptors/auth`](interceptors/auth) - a customizable via `AuthFunc` piece of auth middleware.
+* [`github.com/tulzke/go-grpc-middleware/v2/interceptors/auth`](interceptors/auth) - a customizable via `AuthFunc` piece of auth middleware.
 * (external) [`google.golang.org/grpc/authz`](https://github.com/grpc/grpc-go/blob/master/authz/grpc_authz_server_interceptors.go) - more complex, customizable via auth polices (RBAC like), piece of auth middleware.
 
 #### Observability
@@ -53,7 +53,7 @@ All paths should work with `go get <path>`.
 * Metrics:
   * [`github.com/grpc-ecosystem/go-grpc-middleware/providers/prometheus`⚡](providers/prometheus) - Prometheus client-side and server-side monitoring middleware. Supports exemplars. Moved from deprecated now [`go-grpc-prometheus`](https://github.com/grpc-ecosystem/go-grpc-prometheus).
   * (external) [`go.opentelemetry.io/contrib/instrumentation/google.golang.org/grpc/otelgrpc`](https://go.opentelemetry.io/contrib/instrumentation/google.golang.org/grpc/otelgrpc) - official OpenTelemetry interceptors (metric and tracing).
-* Logging with [`github.com/grpc-ecosystem/go-grpc-middleware/v2/interceptors/logging`](interceptors/logging) - a customizable logging middleware offering extended per request logging. It requires logging adapter, see examples in [`interceptors/logging/examples`](interceptors/logging/examples) for `go-kit`, `log`, `logr`, `logrus`, `slog`, `zap` and `zerolog`.
+* Logging with [`github.com/tulzke/go-grpc-middleware/v2/interceptors/logging`](interceptors/logging) - a customizable logging middleware offering extended per request logging. It requires logging adapter, see examples in [`interceptors/logging/examples`](interceptors/logging/examples) for `go-kit`, `log`, `logr`, `logrus`, `slog`, `zap` and `zerolog`.
   * NOTE: Interceptors with [context](https://pkg.go.dev/context) field injections need to be chained before the adapter function.
 * Tracing:
   * (external) [`go.opentelemetry.io/contrib/instrumentation/google.golang.org/grpc/otelgrpc`](https://go.opentelemetry.io/contrib/instrumentation/google.golang.org/grpc/otelgrpc) - official OpenTelemetry interceptors (metric and tracing) as used in [example](examples).
@@ -61,20 +61,20 @@ All paths should work with `go get <path>`.
 
 #### Client
 
-* [`github.com/grpc-ecosystem/go-grpc-middleware/v2/interceptors/retry`](interceptors/retry) - a generic gRPC response code retry mechanism, client-side middleware.
+* [`github.com/tulzke/go-grpc-middleware/v2/interceptors/retry`](interceptors/retry) - a generic gRPC response code retry mechanism, client-side middleware.
   * NOTE: grpc-go has native retries too with advanced policies (https://github.com/grpc/grpc-go/blob/v1.54.0/examples/features/retry/client/main.go)
-* [`github.com/grpc-ecosystem/go-grpc-middleware/v2/interceptors/timeout`](interceptors/timeout) - a generic gRPC request timeout, client-side middleware.
+* [`github.com/tulzke/go-grpc-middleware/v2/interceptors/timeout`](interceptors/timeout) - a generic gRPC request timeout, client-side middleware.
 
 #### Server
 
-* [`github.com/grpc-ecosystem/go-grpc-middleware/v2/interceptors/validator`](interceptors/validator) - codegen inbound message validation from `.proto` options.
-* [`github.com/grpc-ecosystem/go-grpc-middleware/v2/interceptors/recovery`](interceptors/recovery) - turn panics into gRPC errors (make sure to use those as "last" interceptor, so panic does not skip other interceptors).
-* [`github.com/grpc-ecosystem/go-grpc-middleware/v2/interceptors/ratelimit`](interceptors/ratelimit) - grpc rate limiting by your own limiter.
-* [`github.com/grpc-ecosystem/go-grpc-middleware/v2/interceptors/protovalidate`](interceptors/protovalidate) - message validation from `.proto` options via [protovalidate-go](https://github.com/bufbuild/protovalidate)
+* [`github.com/tulzke/go-grpc-middleware/v2/interceptors/validator`](interceptors/validator) - codegen inbound message validation from `.proto` options.
+* [`github.com/tulzke/go-grpc-middleware/v2/interceptors/recovery`](interceptors/recovery) - turn panics into gRPC errors (make sure to use those as "last" interceptor, so panic does not skip other interceptors).
+* [`github.com/tulzke/go-grpc-middleware/v2/interceptors/ratelimit`](interceptors/ratelimit) - grpc rate limiting by your own limiter.
+* [`github.com/tulzke/go-grpc-middleware/v2/interceptors/protovalidate`](interceptors/protovalidate) - message validation from `.proto` options via [protovalidate-go](https://github.com/bufbuild/protovalidate)
 
 #### Filtering Interceptor
 
-* [`github.com/grpc-ecosystem/go-grpc-middleware/v2/interceptors/selector`](interceptors/selector) - allow users to select given one or more interceptors in certain condition like matching service method.
+* [`github.com/tulzke/go-grpc-middleware/v2/interceptors/selector`](interceptors/selector) - allow users to select given one or more interceptors in certain condition like matching service method.
 
 ## Prerequisites
 
@@ -91,7 +91,7 @@ The [`interceptors` directory](interceptors) also holds generic interceptors tha
 As you might notice this repository contains multiple modules with different versions ([Go Module specifics](https://github.com/golang/go/wiki/Modules#faqs--multi-module-repositories)). Refer to [versions.yaml](versions.yaml) for current modules. We have main module of version 2.x.y and providers modules of lower versions. Since main module is v2, it's module path ends with `v2`:
 
 ```
-go get github.com/grpc-ecosystem/go-grpc-middleware/v2/<package>
+go get github.com/tulzke/go-grpc-middleware/v2/<package>
 ```
 
 For providers modules and packages, since they are v1, no version is added to the path e.g.
@@ -111,7 +111,7 @@ go get github.com/grpc-ecosystem/go-grpc-middleware/providers/prometheus
 * One of the most powerful interceptor was imported from https://github.com/grpc-ecosystem/go-grpc-prometheus (repo is now deprecated). This consolidation allows easier maintenance, easier use and consistent API.
 * Chain interceptors was removed, because `grpc` implemented one.
 * Moved to the new proto API (google.golang.org/protobuf).
-* All "deciders", so functions that decide what to do based on gRPC service name and method (aka "fullMethodName") are removed (!). Use [`github.com/grpc-ecosystem/go-grpc-middleware/v2/interceptors/selector`](interceptors/selector) interceptor to select what method, type or service should use what interceptor.
+* All "deciders", so functions that decide what to do based on gRPC service name and method (aka "fullMethodName") are removed (!). Use [`github.com/tulzke/go-grpc-middleware/v2/interceptors/selector`](interceptors/selector) interceptor to select what method, type or service should use what interceptor.
 * No more snake case package names. We have now single word meaningful package names. If you have collision in package names we recommend adding grpc prefix e.g. `grpcprom "github.com/grpc-ecosystem/go-grpc-middleware/providers/prometheus"`.
 * All the options (if any) are in the form of `<package_name>.With<Option Name>`, with extensibility to add more of them.
 * `v2` is the main (default) development branch.
@@ -122,7 +122,7 @@ This assumes we want to release minor version of any module:
 
 1. Understand what has been change and what groups within [versions](versions.yaml) has to be updated.
 2. Update group version on v2 branch accordingly.
-3. Create new tag for *each module* that has to be released. For the main module `github.com/grpc-ecosystem/go-grpc-middleware/v2` the tag has no prefix (e.g. v2.20.1). For providers (sub modules), the tag version has to have form e.g. `providers/<provider/v1.2.3`. See https://github.com/golang/go/wiki/Modules#faqs--multi-module-repositories for details.
+3. Create new tag for *each module* that has to be released. For the main module `github.com/tulzke/go-grpc-middleware/v2` the tag has no prefix (e.g. v2.20.1). For providers (sub modules), the tag version has to have form e.g. `providers/<provider/v1.2.3`. See https://github.com/golang/go/wiki/Modules#faqs--multi-module-repositories for details.
 4. Once all tags are pushed, draft and create release on GitHub page, mentioning all changed tags in the title. Use auto-generation of notes and remove those that are not relevant for users (e.g. fixing docs).
 
 ## License

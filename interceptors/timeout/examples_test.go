@@ -8,8 +8,8 @@ import (
 	"log"
 	"time"
 
-	"github.com/grpc-ecosystem/go-grpc-middleware/v2/interceptors/timeout"
-	"github.com/grpc-ecosystem/go-grpc-middleware/v2/testing/testpb"
+	"github.com/tulzke/go-grpc-middleware/v2/interceptors/timeout"
+	"github.com/tulzke/go-grpc-middleware/v2/testing/testpb"
 	"google.golang.org/grpc"
 )
 

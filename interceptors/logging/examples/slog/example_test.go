@@ -7,7 +7,7 @@ import (
 	"context"
 	"os"
 
-	"github.com/grpc-ecosystem/go-grpc-middleware/v2/interceptors/logging"
+	"github.com/tulzke/go-grpc-middleware/v2/interceptors/logging"
 	"golang.org/x/exp/slog"
 	"google.golang.org/grpc"
 )

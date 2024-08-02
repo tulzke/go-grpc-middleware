@@ -3,7 +3,7 @@ module github.com/grpc-ecosystem/go-grpc-middleware/providers/prometheus
 go 1.21
 
 require (
-	github.com/grpc-ecosystem/go-grpc-middleware/v2 v2.0.0-rc.3
+	github.com/tulzke/go-grpc-middleware/v2 v2.0.0-rc.3
 	github.com/prometheus/client_golang v1.14.0
 	github.com/prometheus/client_model v0.3.0
 	github.com/stretchr/testify v1.8.4

@@ -9,7 +9,7 @@ import (
 	"log"
 	"os"
 
-	"github.com/grpc-ecosystem/go-grpc-middleware/v2/interceptors/logging"
+	"github.com/tulzke/go-grpc-middleware/v2/interceptors/logging"
 	"google.golang.org/grpc"
 )
 

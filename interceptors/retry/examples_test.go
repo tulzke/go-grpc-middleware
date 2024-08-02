@@ -8,7 +8,7 @@ import (
 	"io"
 	"time"
 
-	"github.com/grpc-ecosystem/go-grpc-middleware/v2/testing/testpb"
+	"github.com/tulzke/go-grpc-middleware/v2/testing/testpb"
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/codes"
 )

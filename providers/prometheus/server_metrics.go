@@ -4,8 +4,8 @@
 package prometheus
 
 import (
-	"github.com/grpc-ecosystem/go-grpc-middleware/v2/interceptors"
 	"github.com/prometheus/client_golang/prometheus"
+	"github.com/tulzke/go-grpc-middleware/v2/interceptors"
 	grpc_signature "github.com/tulzke/grpc-signature"
 	"google.golang.org/grpc"
 )

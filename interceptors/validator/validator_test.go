@@ -7,8 +7,8 @@ import (
 	"context"
 	"testing"
 
-	"github.com/grpc-ecosystem/go-grpc-middleware/v2/testing/testpb"
 	"github.com/stretchr/testify/assert"
+	"github.com/tulzke/go-grpc-middleware/v2/testing/testpb"
 )
 
 func TestValidateWrapper(t *testing.T) {

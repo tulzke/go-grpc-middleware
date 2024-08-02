@@ -5,7 +5,7 @@ go 1.19
 require (
 	github.com/go-kit/log v0.2.1
 	github.com/go-logr/logr v1.2.4
-	github.com/grpc-ecosystem/go-grpc-middleware/v2 v2.0.0
+	github.com/tulzke/go-grpc-middleware/v2 v2.0.0
 	github.com/phuslu/log v1.0.83
 	github.com/rs/zerolog v1.29.0
 	github.com/sirupsen/logrus v1.9.0
@@ -29,4 +29,4 @@ require (
 	google.golang.org/protobuf v1.31.0 // indirect
 )
 
-replace github.com/grpc-ecosystem/go-grpc-middleware/v2 => ../../../
+replace github.com/tulzke/go-grpc-middleware/v2 => ../../../

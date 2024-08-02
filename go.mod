@@ -1,4 +1,4 @@
-module github.com/grpc-ecosystem/go-grpc-middleware/v2
+module github.com/tulzke/go-grpc-middleware/v2
 
 go 1.19
 

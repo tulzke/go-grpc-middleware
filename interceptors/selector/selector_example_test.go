@@ -6,11 +6,11 @@ package selector_test
 import (
 	"context"
 
-	"github.com/grpc-ecosystem/go-grpc-middleware/v2/interceptors"
-	"github.com/grpc-ecosystem/go-grpc-middleware/v2/interceptors/auth"
-	"github.com/grpc-ecosystem/go-grpc-middleware/v2/interceptors/logging"
-	"github.com/grpc-ecosystem/go-grpc-middleware/v2/interceptors/ratelimit"
-	"github.com/grpc-ecosystem/go-grpc-middleware/v2/interceptors/selector"
+	"github.com/tulzke/go-grpc-middleware/v2/interceptors"
+	"github.com/tulzke/go-grpc-middleware/v2/interceptors/auth"
+	"github.com/tulzke/go-grpc-middleware/v2/interceptors/logging"
+	"github.com/tulzke/go-grpc-middleware/v2/interceptors/ratelimit"
+	"github.com/tulzke/go-grpc-middleware/v2/interceptors/selector"
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/status"

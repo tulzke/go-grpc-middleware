@@ -6,7 +6,7 @@ package ratelimit_test
 import (
 	"context"
 
-	"github.com/grpc-ecosystem/go-grpc-middleware/v2/interceptors/ratelimit"
+	"github.com/tulzke/go-grpc-middleware/v2/interceptors/ratelimit"
 	"google.golang.org/grpc"
 )
 
